@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PolitiekeBarometer</string>
+    <string name="start_of_scrollview">Start of Scrollview</string>
+    <string name="end_of_scrollview">End of Scrollview</string>
+</resources>
