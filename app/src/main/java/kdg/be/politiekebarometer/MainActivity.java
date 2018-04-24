@@ -12,14 +12,20 @@ import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.listener.OnChartGestureListener;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private BarChart barChart;
     private PieChart pieChart;
@@ -35,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEventHandlers() {
-
+      //  lineChart.setOnChartGestureListener(this);
+      // lineChart.setOnChartValueSelectedListener(MainActivity.this);
     }
 
     private void initialiseViews() {
@@ -46,8 +53,37 @@ public class MainActivity extends AppCompatActivity {
         setPieData();
 
         lineChart = findViewById(R.id.lineChart);
+        setLineData();
 
 
+
+    }
+
+    private void setLineData() {
+        ArrayList<Entry> yVals = new ArrayList<>();
+        yVals.add(new Entry(0, 60f));
+        yVals.add(new Entry(1, 50f));
+        yVals.add(new Entry(2, 70f));
+        yVals.add(new Entry(3, 30f));
+        yVals.add(new Entry(4, 50f));
+        yVals.add(new Entry(5, 60f));
+        yVals.add(new Entry(6, 65f));
+
+        LineDataSet set = new LineDataSet(yVals, "Line Data Set");
+        set.setFillAlpha(110);
+
+        set.setColor(Color.RED);
+        set.setLineWidth(3f);
+        set.setValueTextColor(Color.GREEN);
+        set.setValueTextSize(10f);
+
+        ArrayList<ILineDataSet> dataSet = new ArrayList<>();
+        dataSet.add(set);
+        LineData lineData = new LineData(dataSet);
+        lineChart.setData(lineData);
+
+        lineChart.setDragEnabled(true);
+        lineChart.setScaleEnabled(false);
     }
 
     private void setPieData() {
