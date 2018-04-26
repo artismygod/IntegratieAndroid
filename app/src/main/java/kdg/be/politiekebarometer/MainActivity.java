@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity{
         yVals.add(new PieEntry(14f, "Vlaams Belang"));
         yVals.add(new PieEntry(35, "Groen"));
         yVals.add(new PieEntry(40, "PiratenPartij"));
-        yVals.add(new PieEntry(23, "VLD"));
+        yVals.add(new PieEntry(23, "OpenVLD"));
 
         Description description = new Description();
         description.setText("Dit is een PieChart met wat dummy data.");
